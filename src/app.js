@@ -16,7 +16,11 @@ app.use((req, res, next) => {
 });
 
 // ミドルウェア設定
-app.use(cors());
+app.use(cors({
+  origin: 'https://ai-diagnostic-app-frontend.onrender.com',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
+}));
 app.use(express.json());
 app.use('/api', diagnoseRoutes);
 app.use(errorHandler);
